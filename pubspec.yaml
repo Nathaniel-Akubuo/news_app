@@ -1,0 +1,44 @@
+name: news_app
+description: A new Flutter application.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cached_network_image:
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.0
+  http: ^0.13.3
+  intl:
+  provider: ^5.0.0
+  webview_flutter: ^2.0.9
+
+  #stacked
+  stacked: ^2.1.8
+  stacked_services: ^0.8.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  stacked_generator: ^0.4.6
+  build_runner:
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+  fonts:
+    - family: HelveticaNeue
+      fonts:
+        - asset: fonts/Helvetica-Neue-LT-55-Roman.ttf

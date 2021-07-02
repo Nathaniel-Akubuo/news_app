@@ -21,7 +21,7 @@ class NewsTile extends StatelessWidget {
         padding: EdgeInsets.only(right: 10),
         child: Container(
           width: mediaQuery.width * 0.6,
-          height: mediaQuery.height * 0.3,
+          height: mediaQuery.height * 0.25,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -29,8 +29,8 @@ class NewsTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  height: mediaQuery.height * 0.2,
-                  width: mediaQuery.width * 0.5,
+                  width: mediaQuery.width * 0.6,
+                  height: mediaQuery.height * 0.15,
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: FittedBox(
@@ -53,7 +53,7 @@ class NewsTile extends StatelessWidget {
                   title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
-                  style: mainTextStyle.copyWith(fontSize: 15),
+                  style: mainTextStyle.copyWith(fontSize: 13),
                 ),
               ),
               SizedBox(height: 5),

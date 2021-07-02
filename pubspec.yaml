@@ -19,6 +19,7 @@ dependencies:
   dio: ^4.0.0
   http: ^0.13.3
   intl:
+  lottie:
   provider: ^5.0.0
   webview_flutter: ^2.0.9
 

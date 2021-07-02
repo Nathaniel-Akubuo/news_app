@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:news_app/constants/contants.dart';
+import 'package:news_app/constants/keys.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:news_app/models/news_tile_model.dart';
@@ -20,7 +20,7 @@ class APIHandler extends ChangeNotifier {
 
   getNewsOfTheDay() {
     getHeadlines().then((value) {
-      var data = value['articles'][1];
+      var data = value['articles'][0];
       newsOfTheDay = NewsTileModel(
           source: data['source']['name'],
           imageURL: data['urlToImage'],

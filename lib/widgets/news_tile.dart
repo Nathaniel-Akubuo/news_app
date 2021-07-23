@@ -53,25 +53,21 @@ class NewsTile extends StatelessWidget {
                   title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
-                  style: mainTextStyle.copyWith(fontSize: 13),
+                  style: kMainTextStyle.copyWith(fontSize: 13),
                 ),
               ),
               SizedBox(height: 5),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(publishedAt,
-                    style: mainTextStyle.copyWith(
-                        fontSize: 12,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.normal)),
+                    style: kMainTextStyle.copyWith(
+                        fontSize: 12, color: Colors.grey)),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(source,
-                    style: mainTextStyle.copyWith(
-                        color: Colors.grey,
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal)),
+                    style: kMainTextStyle.copyWith(
+                        color: Colors.grey, fontSize: 12)),
               ),
             ],
           ),

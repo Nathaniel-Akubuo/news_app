@@ -7,7 +7,6 @@ import 'package:news_app/models/news_tile_model.dart';
 
 class APIHandler extends ChangeNotifier {
   List<NewsTileModel> newsList = [];
-  NewsTileModel _newsOfTheDay;
 
   Future getHeadlines() async {
     Response response = await get(Uri.parse(
@@ -18,28 +17,36 @@ class APIHandler extends ChangeNotifier {
       print(response.statusCode);
   }
 
-  getNewsOfTheDay() {
-    getHeadlines().then((value) {
-      var data = value['articles'][0];
-      newsOfTheDay = NewsTileModel(
-          source: data['source']['name'],
-          imageURL: data['urlToImage'],
-          url: data['url'],
-          title: data['title']);
-    });
+  Future<NewsTileModel>getNewsOfTheDay() async {
+//    getHeadlines().then((value) {
+//      var data = value['articles'][0];
+//      newsOfTheDay = NewsTileModel(
+//          source: data['source']['name'],
+//          imageURL: data['urlToImage'],
+//          url: data['url'],
+//          title: data['title']);
+//    });
+    var response = await getHeadlines();
+    var data = response['articles'][0];
+    var newsOfTheDay = NewsTileModel(
+        source: data['source']['name'],
+        imageURL: data['urlToImage'],
+        url: data['url'],
+        title: data['title']);
+    return newsOfTheDay;
   }
 
-  set newsOfTheDay(NewsTileModel model) {
-    _newsOfTheDay = model;
-    notifyListeners();
-  }
+//  set newsOfTheDay(NewsTileModel model) {
+//    _newsOfTheDay = model;
+//    notifyListeners();
+//  }
 
-  get newsOfTheDay => _newsOfTheDay;
+//  get newsOfTheDay => _newsOfTheDay;
 
   addItems() async {
     var response = await getHeadlines();
     int totalResults = response['totalResults'];
-    for (int i = 0; i < totalResults; i++) {
+    for (int i = 1; i < totalResults; i++) {
       var data = response['articles'][i];
       newsList.add(NewsTileModel(
         source: data['source']['name'],

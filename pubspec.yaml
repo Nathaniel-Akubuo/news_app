@@ -18,9 +18,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.0
   http: ^0.13.3
-  intl:
-  lottie:
+  intl: ^0.17.0
+  lottie: ^1.0.1
+  palette_generator: ^0.3.0
   provider: ^5.0.0
+  shimmer: ^2.0.0
   webview_flutter: ^2.0.9
 
   #stacked

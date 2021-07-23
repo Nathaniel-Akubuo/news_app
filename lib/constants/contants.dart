@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const bottomBorderRadius = BorderRadius.vertical(bottom: Radius.circular(30));
+const kBottomBorderRadius = BorderRadius.vertical(bottom: Radius.circular(30));
 
-const mainTextStyle = TextStyle(
+const kMainTextStyle = TextStyle(
   color: Colors.black,
   fontFamily: 'HelveticaNeue',
   fontSize: 18,

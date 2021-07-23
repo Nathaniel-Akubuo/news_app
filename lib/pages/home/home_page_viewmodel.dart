@@ -13,13 +13,14 @@ class HomePageViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   NewsTileModel newsOfTheDay;
 
+
   Future<Color> generateTextColor(BuildContext context) async {
     PaletteGenerator paletteGenerator =
         await PaletteGenerator.fromImageProvider(
       NetworkImage(newsOfTheDay.imageURL),
       filters: [],
       size: Size(400, 400),
-      region: Offset.zero & Size(200, 300),
+      region: Offset.zero & Size(200, 200),
     );
     return paletteGenerator.dominantColor.color.computeLuminance() > 0.5
         ? Colors.black
@@ -37,4 +38,6 @@ class HomePageViewModel extends BaseViewModel {
     newsOfTheDay = await apiHandler.getNewsOfTheDay();
     notifyListeners();
   }
+
+
 }

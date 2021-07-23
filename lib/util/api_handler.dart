@@ -7,6 +7,7 @@ import 'package:news_app/models/news_tile_model.dart';
 
 class APIHandler extends ChangeNotifier {
   List<NewsTileModel> newsList = [];
+  List<NewsTileModel> searchResults = [];
 
   Future getHeadlines() async {
     Response response = await get(Uri.parse(
@@ -17,7 +18,7 @@ class APIHandler extends ChangeNotifier {
       print(response.statusCode);
   }
 
-  Future<NewsTileModel>getNewsOfTheDay() async {
+  Future<NewsTileModel> getNewsOfTheDay() async {
 //    getHeadlines().then((value) {
 //      var data = value['articles'][0];
 //      newsOfTheDay = NewsTileModel(
@@ -46,7 +47,7 @@ class APIHandler extends ChangeNotifier {
   addItems() async {
     var response = await getHeadlines();
     int totalResults = response['totalResults'];
-    for (int i = 1; i < totalResults; i++) {
+    for (int i = 0; i < totalResults; i++) {
       var data = response['articles'][i];
       newsList.add(NewsTileModel(
         source: data['source']['name'],
@@ -66,11 +67,34 @@ class APIHandler extends ChangeNotifier {
         'https://newsapi.org/v2/top-headlines?country=ng&category=$category&apiKey=$apiKey'));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      print(data);
       return data;
     } else {
       print(response.statusCode);
     }
-    notifyListeners();
+  }
+
+  searchKeyword(String keyword) async {
+    Response response = await get(Uri.parse(
+        'https://newsapi.org/v2/everything?q=$keyword&apiKey=$apiKey'));
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      int totalResults = data['totalResults'];
+      for (int i = 0; i < totalResults; i++) {
+        searchResults.add(
+          NewsTileModel(
+            source: data['source']['name'],
+            imageURL: data['urlToImage'],
+            url: data['url'],
+            title: data['title'],
+            description: data['description'],
+            publishedAt:
+                DateFormat.yMd().format(DateTime.parse(data['publishedAt'])),
+          ),
+        );
+      }
+      notifyListeners();
+    } else {
+      print(response.statusCode);
+    }
   }
 }

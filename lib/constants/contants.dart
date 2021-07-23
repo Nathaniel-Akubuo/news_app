@@ -8,3 +8,5 @@ const kMainTextStyle = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.bold,
 );
+
+const kMainPadding = EdgeInsets.all(20);

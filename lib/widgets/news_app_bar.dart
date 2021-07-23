@@ -25,6 +25,7 @@ class NewsAppBar extends StatelessWidget {
               ),
               shape: RoundedRectangleBorder(borderRadius: kBottomBorderRadius),
               backgroundColor: Colors.white,
+              elevation: 0,
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                   borderRadius: kBottomBorderRadius,

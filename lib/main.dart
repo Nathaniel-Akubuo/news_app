@@ -5,7 +5,6 @@ import 'package:news_app/util/services.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'app/app.router.dart';
-import 'screens/home/home_page_view.dart';
 
 void main() {
   setupLocator();
@@ -22,7 +21,6 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePageView(),
         navigatorKey: StackedService.navigatorKey,
         onGenerateRoute: StackedRouter().onGenerateRoute,
       ),

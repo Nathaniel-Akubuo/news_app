@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/constants/contants.dart';
-import 'package:news_app/screens/news_details/news_page_view_model.dart';
+import 'package:news_app/pages/news_details/news_page_view_model.dart';
 import 'package:stacked/stacked.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

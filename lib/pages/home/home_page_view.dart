@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/constants/contants.dart';
-import 'package:news_app/screens/home/home_page_viewmodel.dart';
+import 'package:news_app/pages/home/home_page_viewmodel.dart';
 import 'package:news_app/util/api_handler.dart';
 import 'package:news_app/widgets/loading_layout.dart';
 import 'package:news_app/widgets/news_app_bar.dart';
 import 'package:news_app/widgets/news_tile.dart';
+import 'package:news_app/widgets/shimmer_app_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
 class HomePageView extends StatefulWidget {
@@ -30,7 +30,7 @@ class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context).size;
-    return ViewModelBuilder<HomePageViewModel>.nonReactive(
+    return ViewModelBuilder<HomePageViewModel>.reactive(
         builder: (context, model, child) =>
             Consumer<APIHandler>(builder: (context, child, apiHandler) {
               var apiHandler = Provider.of<APIHandler>(context, listen: false);
@@ -40,22 +40,6 @@ class _HomePageViewState extends State<HomePageView> {
                   if (snapshot.hasData) {
                     return Scaffold(
                       backgroundColor: Colors.white,
-                      bottomNavigationBar: BottomNavigationBar(
-                        type: BottomNavigationBarType.fixed,
-                        backgroundColor: Colors.white,
-                        unselectedItemColor: Colors.black,
-                        selectedItemColor: Colors.black,
-                        items: [
-                          BottomNavigationBarItem(
-                              icon: Icon(Icons.home, size: 30), label: ''),
-                          BottomNavigationBarItem(
-                              icon: Icon(Icons.search, size: 30), label: ''),
-                          BottomNavigationBarItem(
-                              icon:
-                                  Icon(Icons.person_outline_rounded, size: 30),
-                              label: '')
-                        ],
-                      ),
                       appBar: PreferredSize(
                         preferredSize:
                             Size.fromHeight(_mediaQuery.height * 0.5),
@@ -75,38 +59,25 @@ class _HomePageViewState extends State<HomePageView> {
                                     url: model.newsOfTheDay.url),
                               );
                             } else
-                              return PreferredSize(
-                                preferredSize:
-                                    Size.fromHeight(_mediaQuery.height * 0.5),
-                                child: Shimmer.fromColors(
-                                  baseColor: Colors.grey,
-                                  highlightColor: Colors.grey[100],
-                                  child: AppBar(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: kBottomBorderRadius),
-                                    backgroundColor: Colors.white,
-                                  ),
-                                ),
-                              );
+                              return ShimmerAppBar(height: _mediaQuery.height *0.5);
                           },
                         ),
                       ),
                       body: Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: kMainPadding,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(height: 20),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text('Breaking News',
-                                    style: kMainTextStyle.copyWith(
-                                        fontSize: 25)),
+                                    style:
+                                        kMainTextStyle.copyWith(fontSize: 25)),
                                 Text('More',
-                                    style: kMainTextStyle.copyWith(
-                                        fontSize: 20))
+                                    style:
+                                        kMainTextStyle.copyWith(fontSize: 20))
                               ],
                             ),
                             SizedBox(height: 10),
@@ -116,8 +87,7 @@ class _HomePageViewState extends State<HomePageView> {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: apiHandler.newsList.length,
                                 itemBuilder: (context, index) {
-                                  var currentItem =
-                                      apiHandler.newsList[index];
+                                  var currentItem = apiHandler.newsList[index];
                                   return NewsTile(
                                     title: currentItem.title,
                                     imageURL: currentItem.imageURL,

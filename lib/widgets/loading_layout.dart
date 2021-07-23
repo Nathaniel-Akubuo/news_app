@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/constants/contants.dart';
+import 'package:news_app/widgets/shimmer_app_bar.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoadingLayout extends StatelessWidget {
@@ -7,43 +8,15 @@ class LoadingLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize:
-        Size.fromHeight(_mediaQuery.height * 0.5),
-        child: Shimmer.fromColors(
-          baseColor: Colors.grey[400],
-          highlightColor: Colors.grey[100],
-          child: AppBar(
-            shape: RoundedRectangleBorder(
-                borderRadius: kBottomBorderRadius),
-            backgroundColor: Colors.white,
-          ),
-        ),
-      ),
+      appBar: ShimmerAppBar(height: _mediaQuery.height*0.5),
       backgroundColor: Colors.white,
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.black,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 30), label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search, size: 30), label: ''),
-          BottomNavigationBarItem(
-              icon:
-              Icon(Icons.person_outline_rounded, size: 30),
-              label: '')
-        ],
-      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment:
                 MainAxisAlignment.spaceBetween,
@@ -56,7 +29,7 @@ class LoadingLayout extends StatelessWidget {
                       kMainTextStyle.copyWith(fontSize: 20))
                 ],
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Container(
                 height: _mediaQuery.height * 0.25,
                 child: ListView.builder(
@@ -91,7 +64,7 @@ class LoadingLayout extends StatelessWidget {
                                   BorderRadius.circular(
                                       20)),
                               width: _mediaQuery.width * 0.6,
-                              height: 10,
+                              height: 30,
                             ),
                           ),
                           SizedBox(height: 10),
@@ -105,7 +78,7 @@ class LoadingLayout extends StatelessWidget {
                                   BorderRadius.circular(
                                       20)),
                               width: _mediaQuery.width * 0.6,
-                              height: 10,
+                              height: 20,
                             ),
                           ),
                         ],

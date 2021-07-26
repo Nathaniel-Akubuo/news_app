@@ -12,15 +12,21 @@ class HorizontalNewsTile extends StatelessWidget {
   final String url;
 
   HorizontalNewsTile(
-      {this.imageURL, this.publishedAt, this.source, this.title, this.onTap, this.url});
+      {this.imageURL,
+      this.publishedAt,
+      this.source,
+      this.title,
+      this.onTap,
+      this.url});
 
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context).size;
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+    return Padding(
+      padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+      child: InkWell(
+        borderRadius: kCircularBorderRadius,
+        onTap: onTap,
         child: Container(
           width: _mediaQuery.width,
           height: _mediaQuery.height * 0.1,
@@ -31,7 +37,7 @@ class HorizontalNewsTile extends StatelessWidget {
                 height: _mediaQuery.height * 0.1,
                 width: _mediaQuery.width * 0.2,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: kCircularBorderRadius,
                   child: FittedBox(
                     fit: BoxFit.cover,
                     child: FadeInImage(
@@ -57,13 +63,25 @@ class HorizontalNewsTile extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Expanded(child: Text(source)),
+                        Expanded(
+                          child: Text(
+                            source,
+                            style: kMainTextStyle.copyWith(color: Colors.grey, fontSize: 12),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                         horizontalSpaceMedium,
                         Icon(Icons.circle, size: 6, color: Colors.grey),
                         horizontalSpaceMedium,
                         Icon(Icons.access_time, color: Colors.grey, size: 15),
                         horizontalSpaceTiny,
-                        Expanded(child: Text(publishedAt))
+                        Text(
+                          publishedAt,
+                          style: kMainTextStyle.copyWith(color: Colors.grey, fontSize: 12),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        )
                       ],
                     )
                   ],

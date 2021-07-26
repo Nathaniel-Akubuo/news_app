@@ -47,8 +47,7 @@ class LoadingLayout extends StatelessWidget {
                                 _mediaQuery.height * 0.15,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                    BorderRadius.circular(
-                                        20),
+                                    kCircularBorderRadius,
                                     color: Colors.white)),
                             baseColor: Colors.grey[400],
                             highlightColor: Colors.grey[100],
@@ -61,8 +60,7 @@ class LoadingLayout extends StatelessWidget {
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
-                                  BorderRadius.circular(
-                                      20)),
+                                  kCircularBorderRadius),
                               width: _mediaQuery.width * 0.6,
                               height: 20,
                             ),
@@ -75,8 +73,7 @@ class LoadingLayout extends StatelessWidget {
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
-                                  BorderRadius.circular(
-                                      20)),
+                                  kCircularBorderRadius),
                               width: _mediaQuery.width * 0.6,
                               height: 20,
                             ),

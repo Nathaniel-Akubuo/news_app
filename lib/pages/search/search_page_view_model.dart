@@ -29,7 +29,9 @@ class SearchPageViewModel extends BaseViewModel {
 
   void onSubmitted(context) async {
     _navigationService.navigateTo(Routes.resultsPage);
+    Provider.of<APIHandler>(context, listen: false).searchResults = [];
     Provider.of<Services>(context, listen: false).keyword = controller.text;
+    notifyListeners();
   }
 
   Future<void> getBusinessNews(context) async {
@@ -47,7 +49,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-            DateFormat.yMd().format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -67,7 +69,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-            DateFormat.yMd().format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -87,7 +89,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-            DateFormat.yMd().format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -107,7 +109,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-            DateFormat.yMd().format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -127,7 +129,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-            DateFormat.yMd().format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -147,7 +149,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-            DateFormat.yMd().format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }

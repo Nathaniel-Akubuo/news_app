@@ -22,7 +22,7 @@ class NewsTile extends StatelessWidget {
           width: mediaQuery.width * 0.6,
           height: mediaQuery.height * 0.25,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: kCircularBorderRadius,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +31,7 @@ class NewsTile extends StatelessWidget {
                   width: mediaQuery.width * 0.6,
                   height: mediaQuery.height * 0.15,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: kCircularBorderRadius,
                       child: FittedBox(
                         fit: BoxFit.cover,
                         child: FadeInImage(

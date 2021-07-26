@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/constants/contants.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -16,7 +17,7 @@ class CustomTextField extends StatelessWidget {
       width: _mediaQuery.width,
       height: 60,
       decoration: BoxDecoration(
-          color: Colors.grey[100], borderRadius: BorderRadius.circular(15)),
+          color: Colors.grey[100], borderRadius: kCircularBorderRadius),
       child: Center(
         child: TextField(
           controller: controller,

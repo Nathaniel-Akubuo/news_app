@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/constants/contants.dart';
 import 'package:news_app/constants/ui_helpers.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -24,7 +25,7 @@ class ShimmerTile extends StatelessWidget {
                 width: _mediaQuery.width * 0.2,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: kCircularBorderRadius),
               ),
             ),
             horizontalSpaceSmall,
@@ -38,7 +39,7 @@ class ShimmerTile extends StatelessWidget {
                     child: Container(
                       width: _mediaQuery.width,
                       height: 20,
-                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: kCircularBorderRadius),
                     ),
                   ),
                   Shimmer.fromColors(
@@ -47,7 +48,7 @@ class ShimmerTile extends StatelessWidget {
                     child: Container(
                       width: _mediaQuery.width,
                       height: 20,
-                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: kCircularBorderRadius),
                     ),
                   ),
                 ],

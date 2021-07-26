@@ -18,7 +18,6 @@ class _ResultsPageState extends State<ResultsPage> {
 
   @override
   void initState() {
-    print(Provider.of<Services>(context, listen: false).keyword);
     future = Provider.of<APIHandler>(context, listen: false).searchKeyword(
         keyword: Provider.of<Services>(context, listen: false).keyword);
     super.initState();

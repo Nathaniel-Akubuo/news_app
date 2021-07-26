@@ -44,23 +44,5 @@ class HomePageViewModel extends BaseViewModel {
         imageURL: data['urlToImage'], url: data['url'], title: data['title']);
   }
 
-//  Future addItems(context) async {
-//    var apiHandler = Provider.of<APIHandler>(context, listen: false);
-//    var response = await apiHandler.getHeadlines();
-//    int totalResults = response['totalResults'];
-//    for (int i = 0; i < totalResults; i++) {
-//      var data = response['articles'][i];
-//      _newsList.add(NewsTileModel(
-//        source: data['source']['name'],
-//        imageURL: data['urlToImage'],
-//        url: data['url'],
-//        title: data['title'],
-//        description: data['description'],
-//        publishedAt:
-//            DateFormat.yMd().format(DateTime.parse(data['publishedAt'])),
-//      ));
-//    }
-//  }
-
   get newsOfTheDay => _newsOfTheDay;
 }

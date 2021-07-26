@@ -32,8 +32,9 @@ class APIHandler extends ChangeNotifier {
         title: data['title'],
         description: data['description'],
         publishedAt:
-            DateFormat.yMd().format(DateTime.parse(data['publishedAt'])),
+        DateFormat('MMMM d, y').format(DateTime.parse(data['publishedAt'])),
       ));
+      notifyListeners();
     }
   }
 
@@ -50,7 +51,7 @@ class APIHandler extends ChangeNotifier {
 
   Future<void> searchKeyword({String keyword}) async {
     Response response = await get(Uri.parse(
-        'https://newsapi.org/v2/everything?q=$keyword&apiKey=$apiKey&pageSize=100'));
+        'https://newsapi.org/v2/everything?qInTitle=$keyword&apiKey=$apiKey&pageSize=100'));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       int totalResults = data['totalResults'];

@@ -63,7 +63,7 @@ class APIHandler extends ChangeNotifier {
           url: currentItem['url'],
           title: currentItem['title'],
           description: currentItem['description'],
-          publishedAt: DateFormat.yMd()
+          publishedAt: DateFormat('MMMM d, y')
               .format(DateTime.parse(currentItem['publishedAt'])),
         ));
         notifyListeners();

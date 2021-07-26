@@ -49,7 +49,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d, y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -69,7 +69,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d, y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -89,7 +89,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d, y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -109,7 +109,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d, y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -129,7 +129,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d, y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }
@@ -149,7 +149,7 @@ class SearchPageViewModel extends BaseViewModel {
         title: currentItem['title'],
         description: currentItem['description'],
         publishedAt:
-        DateFormat('MMMM d y').format(DateTime.parse(currentItem['publishedAt'])),
+        DateFormat('MMMM d, y').format(DateTime.parse(currentItem['publishedAt'])),
       ));
     }
   }

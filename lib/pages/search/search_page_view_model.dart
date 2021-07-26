@@ -152,12 +152,6 @@ class SearchPageViewModel extends BaseViewModel {
     }
   }
 
-  void navigateToNewsPage({context, title, url}) {
-    _navigationService.navigateTo(Routes.newsPageView);
-    Provider.of<Services>(context, listen: false).url = url;
-    Provider.of<Services>(context, listen: false).title = title;
-  }
-
   List<NewsTileModel> get technologyNewsList => _technologyNewsList;
 
   List<NewsTileModel> get sportsNewsList => _sportsNewsList;

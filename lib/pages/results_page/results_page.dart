@@ -50,7 +50,10 @@ class _ResultsPageState extends State<ResultsPage> {
                         var currentNewsItem = apiHandler.searchResults[index];
                         return HorizontalNewsTile(
                           imageURL: currentNewsItem.imageURL,
-                          onTap: () {},
+                          onTap: () => model.navigateToNewsPage(
+                              context: context,
+                              title: currentNewsItem.title,
+                              url: currentNewsItem.url),
                           publishedAt: currentNewsItem.publishedAt,
                           source: currentNewsItem.source,
                           title: currentNewsItem.title,
@@ -60,7 +63,7 @@ class _ResultsPageState extends State<ResultsPage> {
                     );
                   } else
                     return ListView.builder(
-                      itemCount: 10,
+                        itemCount: 10,
                         itemBuilder: (context, index) => ShimmerTile());
                 },
               ),

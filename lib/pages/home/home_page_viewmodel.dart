@@ -20,7 +20,6 @@ class HomePageViewModel extends BaseViewModel {
             NetworkImage(newsOfTheDay.imageURL),
             filters: [],
             size: Size(_mediaQuery.width, _mediaQuery.height * 0.5),
-      region: Offset.zero & Size(200, 200),
 //            region: Rect.fromPoints(
 //                Offset(_mediaQuery.width, _mediaQuery.height / 4),
 //                Offset(_mediaQuery.width, _mediaQuery.height / 2))

@@ -73,8 +73,6 @@ class SearchPage extends StatelessWidget {
                             BusinessTab(
                               future: model.getBusinessNews(context),
                               newsList: model.businessNewsList,
-                              onTap: model.navigateToNewsPage,
-//                              onTap: model.navigateToNewsPage(context: context, url: ),
                             ),
                             EntertainmentTab(
                               future: model.getEntertainmentNews(context),

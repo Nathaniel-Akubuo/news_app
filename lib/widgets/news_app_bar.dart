@@ -15,7 +15,7 @@ class NewsAppBar extends StatelessWidget {
     return FutureBuilder(
       future: generateTextColor,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return GestureDetector(
             onTap: onTap,
             child: AppBar(

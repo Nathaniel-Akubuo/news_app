@@ -64,7 +64,7 @@ class LoadingLayout extends StatelessWidget {
                                   BorderRadius.circular(
                                       20)),
                               width: _mediaQuery.width * 0.6,
-                              height: 30,
+                              height: 20,
                             ),
                           ),
                           SizedBox(height: 10),

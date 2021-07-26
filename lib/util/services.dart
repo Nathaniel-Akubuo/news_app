@@ -1,8 +1,14 @@
 import 'package:flutter/foundation.dart';
 
 class Services extends ChangeNotifier {
-  var _url;
+  var _keyword;
   var _title;
+  var _url;
+
+  set keyword(String keyword) {
+    _keyword = keyword;
+    notifyListeners();
+  }
 
   set title(String title) {
     _title = title;
@@ -13,6 +19,8 @@ class Services extends ChangeNotifier {
     _url = url;
     notifyListeners();
   }
+
+  get keyword => _keyword;
 
   get title => _title;
 

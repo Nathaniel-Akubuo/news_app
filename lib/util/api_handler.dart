@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:news_app/models/news_tile_model.dart';
 
 class APIHandler extends ChangeNotifier {
-  List<NewsTileModel> newsList = [];
+  List<NewsTileModel> _newsList = [];
   List<NewsTileModel> searchResults = [];
 
   Future getHeadlines() async {
@@ -18,40 +18,16 @@ class APIHandler extends ChangeNotifier {
       print(response.statusCode);
   }
 
-  Future<NewsTileModel> getNewsOfTheDay() async {
-//    getHeadlines().then((value) {
-//      var data = value['articles'][0];
-//      newsOfTheDay = NewsTileModel(
-//          source: data['source']['name'],
-//          imageURL: data['urlToImage'],
-//          url: data['url'],
-//          title: data['title']);
-//    });
-    var response = await getHeadlines();
-    var data = response['articles'][0];
-    var newsOfTheDay = NewsTileModel(
-        source: data['source']['name'],
-        imageURL: data['urlToImage'],
-        url: data['url'],
-        title: data['title']);
-    return newsOfTheDay;
-  }
-
-//  set newsOfTheDay(NewsTileModel model) {
-//    _newsOfTheDay = model;
-//    notifyListeners();
-//  }
-
-//  get newsOfTheDay => _newsOfTheDay;
-
-  addItems() async {
+  Future addItems() async {
     var response = await getHeadlines();
     int totalResults = response['totalResults'];
     for (int i = 0; i < totalResults; i++) {
       var data = response['articles'][i];
       newsList.add(NewsTileModel(
         source: data['source']['name'],
-        imageURL: data['urlToImage'],
+        imageURL: data['urlToImage'] == null
+            ? 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'
+            : data['urlToImage'],
         url: data['url'],
         title: data['title'],
         description: data['description'],
@@ -59,12 +35,11 @@ class APIHandler extends ChangeNotifier {
             DateFormat.yMd().format(DateTime.parse(data['publishedAt'])),
       ));
     }
-    notifyListeners();
   }
 
-  getNewsCategory(String category) async {
+  Future getNewsCategory(String category) async {
     Response response = await get(Uri.parse(
-        'https://newsapi.org/v2/top-headlines?country=ng&category=$category&apiKey=$apiKey'));
+        'https://newsapi.org/v2/top-headlines?country=ng&category=$category&apiKey=$apiKey&pageSize=100'));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       return data;
@@ -73,28 +48,29 @@ class APIHandler extends ChangeNotifier {
     }
   }
 
-  searchKeyword(String keyword) async {
+  Future<void> searchKeyword({String keyword}) async {
     Response response = await get(Uri.parse(
-        'https://newsapi.org/v2/everything?q=$keyword&apiKey=$apiKey'));
+        'https://newsapi.org/v2/everything?q=$keyword&apiKey=$apiKey&pageSize=100'));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       int totalResults = data['totalResults'];
       for (int i = 0; i < totalResults; i++) {
-        searchResults.add(
-          NewsTileModel(
-            source: data['source']['name'],
-            imageURL: data['urlToImage'],
-            url: data['url'],
-            title: data['title'],
-            description: data['description'],
-            publishedAt:
-                DateFormat.yMd().format(DateTime.parse(data['publishedAt'])),
-          ),
-        );
+        var currentItem = data['articles'][i];
+        searchResults.add(NewsTileModel(
+          source: currentItem['source']['name'],
+          imageURL: currentItem['urlToImage'],
+          url: currentItem['url'],
+          title: currentItem['title'],
+          description: currentItem['description'],
+          publishedAt: DateFormat.yMd()
+              .format(DateTime.parse(currentItem['publishedAt'])),
+        ));
+        notifyListeners();
       }
-      notifyListeners();
     } else {
       print(response.statusCode);
     }
   }
+
+  get newsList => _newsList;
 }
